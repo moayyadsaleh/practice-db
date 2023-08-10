@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%- include('partials/header') %>
+  <title>To Do List</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="todays-date">
+    <%= formattedDate %>
+  </div>
+  <form action="/add-task" method="post">
+    <input type="text" name="taskInput" placeholder="Enter a new task" required/>
+    <button type="submit">Add Task</button>
+  </form>
+  <div class="tasks-container">
+    <ul>
+      <% tasks.forEach((task) => { %>
+        <li class="todo-item <%= task.completed ? 'completed' : '' %>">
+          <form action="/update-task" method="post" class="task-form">
+            <input type="hidden" name="taskId" value="<%= task._id %>">
+            <input type="checkbox" <%= task.completed ? 'checked' : '' %> onchange="this.form.submit()">
+            <strong <%= task.completed ? 'class="completed"' : '' %>><%= task.title %></strong>
+            <button type="submit" style="display: none;"></button> <!-- Hidden submit button to trigger form submission -->
+          </form>
+          <!-- Add the delete form for each task -->
+          <form action="/delete-task" method="post" class="task-form">
+            <input type="hidden" name="taskId" value="<%= task._id %>">
+            <button type="submit" class="delete-button">Delete</button>
+          </form>
+          <span class="timestamp"> Added: <%= task.createdAt.toLocaleTimeString() %></span>
+        </li>
+      <% }); %>
+      <%- include('partials/footer') %>
+
+    </ul>
+  </div>
+</body>
+</html>

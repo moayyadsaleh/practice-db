@@ -1,0 +1,153 @@
+
+
+
+body {
+    font-family: serif, sans-serif;
+  
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(55,16,24,1) 100%);
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  
+  .todays-date {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid rgba(204, 204, 204, 0.7); /* Slightly transparent border */
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+    font-size: 16px;
+  }
+  
+  /* Adjust the button style */
+  button[type="submit"] {
+    padding: 6px 15px; /* Adjust padding for a more compact size */
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    margin-bottom: 5px;
+    margin-right: 10px; /* Add margin to push the button to the left */
+  }
+  button[type="submit"]:hover {
+    background-color: #333;
+  }
+  .tasks-container ul {
+    list-style: none;
+    padding: 0;
+      text-align: center;
+    }
+  
+  .todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding:5px;
+    margin-bottom: 10px;
+    list-style-type: none; /* Remove bullet points for individual items */
+    position: relative; /* Add relative positioning */
+    position: relative;
+    display: flex; /* Add flex display */
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .completed {
+    text-decoration: line-through;
+    color: #999;
+  }
+  
+  .completed::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    border-bottom: 1px solid #999;
+    transform: translateY(-50%);
+  }
+  
+  .todo-item.completed {
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(71,63,61,1) 0%, rgba(14,25,13,1) 94%, rgba(0,16,1,1) 100%);
+  }
+  
+  @media screen and (max-width: 600px) {
+    .container {
+      padding: 10px;
+    }
+  
+    form {
+      flex-direction: column;
+      margin-bottom: 0px;
+    }
+  
+    input[type="text"] {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+  
+  nav {
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(31,19,9,1) 100%);
+    padding: 10px 0;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    display: inline-block;
+    margin: 0 15px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  a:hover {
+    color: #ff9f00;
+  }
+  
+  .fa-calendar-day {
+    margin-right: 5px;
+  }
+  
+  
+  
