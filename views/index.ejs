@@ -17,24 +17,23 @@
   </form>
   <div class="tasks-container">
     <ul>
-      <% tasks.forEach((task) => { %>
+      <% tasks.forEach((task, index) => { %>
         <li class="todo-item <%= task.completed ? 'completed' : '' %>">
           <form action="/update-task" method="post" class="task-form">
-            <input type="hidden" name="taskId" value="<%= task._id %>">
+            <input type="hidden" name="taskId" value="<%= index %>">
             <input type="checkbox" <%= task.completed ? 'checked' : '' %> onchange="this.form.submit()">
             <strong <%= task.completed ? 'class="completed"' : '' %>><%= task.title %></strong>
             <button type="submit" style="display: none;"></button> <!-- Hidden submit button to trigger form submission -->
           </form>
           <!-- Add the delete form for each task -->
           <form action="/delete-task" method="post" class="task-form">
-            <input type="hidden" name="taskId" value="<%= task._id %>">
-            <button type="submit" class="delete-button">Delete</button>
+            <input type="hidden" name="taskId" value="<%= index %>">
+            <button type="submit" class="delete-button" onclick="return confirm('Are you sure you want to delete this task?')">Delete</button>
           </form>
-          <span class="timestamp"> Added: <%= task.createdAt.toLocaleTimeString() %></span>
+          <span class="timestamp"> Added: <%= task.time %></span>
         </li>
       <% }); %>
       <%- include('partials/footer') %>
-
     </ul>
   </div>
 </body>
